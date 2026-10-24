@@ -1,0 +1,63 @@
+\section{Welfare Comparison under Non-Unique Social Planner Weights}
+\label{Sect:Non-Unique_Weights}
+In Section \ref{Sect:Results} and \ref{Sect:Het_Participants_Unique_Weights}, the welfare comparisons are constructed based on a unique vector of Pareto weights. However, not imposing market consistency or working directly with non-convex behavioral preferences may lead to a set of possible social planner weights. Let $\mathcal{A}$ denote the set of admissible Pareto weights with
+\begin{equation*}
+    \mathcal{A} = \left\{ \alpha \in \mathbb{R}_{+}^n : \sum_{i=1}^n \alpha_i = 1 \right\}
+\end{equation*}
+Note that the definition above is more general, but, in principle, we can limit it to only the social planner weights that yield Pareto-efficient allocations.
+
+When participants share identical behavioral parameters and wealth, i.e., they are homogeneous, any social planner function should treat equals equally ex-ante. Even if an ex-post allocation is supported by a set of possible weights $\mathcal{A}$, the set is invariant under permutations of the agents. Hence, the uniform Pareto weights (sometimes called uniform barycenter):
+\begin{equation*}
+    \alpha^* = \left( \frac{1}{n}, \dots, \frac{1}{n} \right)
+\end{equation*}
+collapses the set $\mathcal{A}$ to a unique social planner weight structure. The equal division allocation $x_i = c/n$ solves the maximum in the Pareto-weighted social welfare function $G_{\alpha, u}$, which now satisfies:
+\begin{equation*}
+    G_{\alpha}(c) = \max_{\sum_{i=1}^n x_i = c} \sum_{i=1}^n \alpha_i u(x_i) = \sum_{i=1}^n \frac{1}{n} u(c/n) = u(c/n)
+\end{equation*}
+Hence, the social certainty equivalent logically collapses to $SCE_{\alpha}^k = n CE_{i,t}^k$.
+
+When agents are heterogeneous, no permutation symmetry exists. Consequently, evaluating rules under non-unique weights $\alpha \in \mathcal{A}$ requires systematic aggregation criteria that do not rely on an arbitrary single vector $\alpha$. To establish welfare comparisons robust to weight non-uniqueness over $\mathcal{A}$, we propose three complementary criteria:
+\begin{enumerate}
+    \item \textbf{Uniform Pareto Dominance across Admissible Weights}
+    
+    For any weight vector $\alpha \in \mathcal{A}$, the envelope SCE, denoted by $SCE_{\alpha, \tilde{u}}$, is computed via:
+    \begin{equation*}
+        SCE_{\alpha, \tilde{u}}^k = G_{\alpha, \tilde{u}}^{-1}\left( \sum_{i=1}^n \alpha_i \E_t^{\P}\big(\tilde{u}_{i,t}(W_{i,t+1}^k)\big) \right)
+    \end{equation*}
+    where $G_{\alpha, \tilde{u}}$ is the concave envelope version of the Pareto-weighted maximizer $G_{\alpha}$. Rule $k$ is said to uniformly dominate rule $k'$ on $\mathcal{A}$ if:
+    \begin{equation*}
+        SCE_{\alpha, \tilde{u}}^k \geq SCE_{\alpha, \tilde{u}}^{k'} \quad \forall \alpha \in \mathcal{A}
+    \end{equation*}
+    Uniform dominance ensures that rule $k$ is socially preferred regardless of the Pareto weights. This is a strong comparison criterion, hence we turn to a more robust specification;
+    \item \textbf{Minimax (Worst-Case) Social Certainty Equivalent}
+    
+    When uniform dominance does not hold because rules exhibit distributional trade-offs across cohorts, the social planner may want to evaluate rule $k$ by its worst-case SCE over $\mathcal{A}$, following the idea robust individual choice under ambiguity framework of \citet{Gilboa_Schmeidler_1989_maxmin}, but adapted to our social planner choice, i.e.,
+    \begin{equation}
+        \underline{SCE}^{k}_{\mathcal{A}, \tilde{u}} = \inf_{\alpha \in \mathcal{A}} SCE_{\alpha, \tilde{u}}^k
+    \end{equation}
+    The corresponding robust percentage welfare difference relative to aggregate wealth is defined as:
+    \begin{equation*}
+        \% \Delta \underline{SCE}^{k}_{\mathcal{A}, \tilde{u}} = 100 \times \frac{\underline{SCE}^{k}_{\mathcal{A}, \tilde{u}} - \underline{SCE}^{\text{LEL-CE}}_{\mathcal{A}, \tilde{u}}}{W_t}
+    \end{equation*}
+    A positive value of $\% \Delta \underline{SCE}^{k}_{\mathcal{A}, \tilde{u}}$ indicates that even under the least favorable admissible welfare weighting, rule $k$ provides a higher guaranteed collective money-metric surplus than the baseline LEL-CE allocation;
+
+    \item \textbf{Money-Metric Individual CE Aggregation}
+    
+    Because loss-averse utility functions $u_{i,t}$ are non-linear and reference-dependent, evaluating social welfare directly on expected utilities $\sum \alpha_i \E(u_i)$ conflates individual risk preferences with societal inequality aversion. Following \citet{Atkinson_1970} and \citet{Grantetal2010}, we decouple these dimensions by aggregating the vector of individual certainty equivalents directly. For a given inequality aversion parameter $\rho \geq 0$, the money-metric social planner aggregator is defined by:
+    \begin{equation}
+        W_{\text{CE}}^k(\alpha; \rho) = \begin{cases} \left( \sum_{i=1}^n \alpha_i (CE_{i,t}^k)^{1-\rho} \right)^{\frac{1}{1-\rho}} & \text{if } \rho \neq 1 \\ \exp\left( \sum_{i=1}^n \alpha_i \log(CE_{i,t}^k) \right) & \text{if } \rho = 1 \end{cases}
+    \end{equation}
+    When $\rho = 0$, $W_{\text{CE}}^k(\alpha; 0) = \sum_{i=1}^n \alpha_i CE_{i,t}^k$ represents the linear Pareto sum of individual certainty equivalents, measuring total risk-adjusted purchasing power. Evaluating $\inf_{\alpha \in \mathcal{A}} W_{\text{CE}}^k(\alpha; \rho)$ isolates the monetary welfare generated by the risk-sharing rule from shifts in interpersonal utility scaling, providing an operational scalar benchmark when $\alpha$ is set-valued.
+\end{enumerate}
+With heterogeneous participants the natural first step is to take $\mathcal{A} = \Delta_n$. This turns out to be uninformative as:
+\begin{enumerate}
+    \item The uniform dominance holds if and only if the rule Pareto-dominates in certainty equivalents;
+    \item The maxmin SCE \citep{Gilboa_Schmeidler_1989_maxmin} equals $\min_i CE_{i,t}^k$, which is the CE of the worst-off member. With heterogeneous wealth this is simply the poorest member;
+    \item The individual CE aggregation fails to work in its current shape as $\inf_\alpha W_{CE}(\alpha;\rho)=\min_iCE^k_{i,t}$ for every $\rho$, so the inequality-aversion parameter of the third criterion plays no role.
+\end{enumerate}
+The last two problems follow from Proposition \ref{Prop:SCE_relation}. Hence, non-uniqueness needs to be modelled by a restricted set of weights. We propose two such sets:
+\begin{itemize}
+    \item \textbf{Relaxed market consistency $\mathcal{A}_{\kappa}$}, which contains the weights for which the LEL-CE allocation, computed without its market-consistency step, transfers at most $\kappa W_{i,t}$ of market value to or from any member, with $\mathcal{A}_0 = \{\alpha^*\}$. Then, every admissible vector corresponds to a bounded deviation from market consistency;
+    \item \textbf{Money-weight band $\mathcal{G}_{\kappa}$}, which contains the weights for which the social value of a euro to each member deviates by at most $100\kappa\%$ from that implied by $\alpha^*$ under the normalization discussed earlier in Section \ref{Sect:Het_Participants_Unique_Weights}. It is in the spirit of the social marginal welfare weights of \citet{SaezStantcheva2016}.
+\end{itemize}
+The two sets coincide only for moderately risk-averse members. A band value of transfers therefore translates into a range of weights that widens with risk aversion as the next Section \ref{Sect:Example} will show. Hence, now we can utilize the three comparison criteria from above but only apply them on $\mathcal{A}_{\kappa}$ or $\mathcal{G}_{\kappa}$ instead of the full simplex. The main change now is that the money-metric aggregation $W_{CE}(\alpha;\rho)$ is applied to CE returns $CE_{i,t}/W_{i,t}$ rather than CE levels, so that $\rho$ penalises unequal outcomes of the rule rather than unequal initial wealth \citep{Atkinson_1970}. We summarize each pairwise comparison by a robustness radius, which is the largest value of $\kappa$ for which rule $k$ dominates rule $k'$ on the admissible set. It has to be noted that $\mathcal{A}_{\kappa}$ is defined based on utility, while $\mathcal{G}_{\kappa}$ is money-metric. This brings the discussion on whether it is better to use utility levels or certainty equivalents. In the remaining analysis, especially in the example in Section \ref{Sect:Example} we will try to showcase why using utility levels might not be the best idea in some cases.

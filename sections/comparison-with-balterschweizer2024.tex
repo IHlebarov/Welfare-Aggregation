@@ -1,0 +1,29 @@
+\section{Comparison with \citet{BalterSchweizer2024}}
+The so-far analysis has several similarities with the one of \citet{BalterSchweizer2024}. They can be summarized in the following points:
+\begin{enumerate}
+    \item Rejecting Utilitarian Utility Sums in Favor of Two-Stage Money-Metric Aggregation
+    \begin{itemize}
+        \item \citet{BalterSchweizer2024} reject \citet{Harsanyi1955} utilitarian sum of expected utilities because utility scales are unidentified and due to Nozick's "utility monster", where in the absence of risk a utilitarian social planner confuses heterogeneity in risk aversion $\gamma_i$ with heterogeneous tastes for sure wealth, which means that "an agent whose utility for resources is so great that it dominates the planners preferences" \citep{BalterSchweizer2024}. The authors propose a two-stage functional, where first the CE are computed and then aggregated across agents with the inequality-averse outer utility function $v(c) = \frac{c^{1-\eta}-1}{1-\eta}$, where $\eta$ is their inequality aversion parameter;
+        \item At the same time, we showcase exactly in Section \ref{Sect:Example} the "utility monster", which appears in utility-based aggregation and very high risk aversion $(\gamma_2 \to \infty)$. In Section \ref{Sect:Money_Metric_Comparison} we adopt exactly this two-stage architecture of Balter \& Schweizer's $\mathcal{E}[v(CE(\gamma, m))]$, with our inequality-aversion parameter $\rho$ corresponding directly to their $\eta$.
+    \end{itemize}
+    \item Initial Wealth Heterogeneity
+    \begin{itemize}
+        \item In Remark 11 of \citet{BalterSchweizer2024} note that when initial wealth $V_0(\gamma)$ varies across agents, their unnormalized aggregator $\mathcal{E}[v(V_0(\gamma) CE(\gamma, m))]$ distorts the density of risk types by $V_0(\gamma)^{1-\eta}$ unless $\eta = 1$ (logarithmic social utility), where we follow the notation of the authors;
+        \item In our Section \ref{Sect:Money_Metric_Comparison} we resolve this distortion for all values of inequality aversion $\rho \geq 0$ by dividing individual CEs (or equivalent contributions) by initial wealth $W_{i,t}$ inside the power function and weighting by contribution shares $W_{i,t}/W_t$.
+    \end{itemize}
+    \item The Rawlsian Dictatorship of the most risk-averse agent and the Equivalence between $m_i^k / W_{i,t}$ and the Regret Ratio $CER(\gamma, m)$
+    \begin{itemize}
+        \item In Lemma 6 of \citet{BalterSchweizer2024}, we get that $CE(\gamma, m) = \exp\big(rT + (\mu-r)mT - \frac{1}{2}\gamma m^2 \sigma^2 T\big)$ is strictly decreasing in $\gamma$ for any risky exposure $m > 0$, the most risk-averse type ($\gamma = b$) always has the lowest raw certainty equivalent. Consequently, both the Rawlsian limit ($\eta \to \infty$) and the Wald maxmin game (Lemma 6) degenerate into a dictatorship of the most risk-averse agent $\gamma = b$;
+        \item We also identify this behavior on raw CEs via \citet{FleurbaeyManiquet2011}. Even under the complete-market rule $M$ (where every agent receives their personal Merton optimum $m^*(\gamma_i)$), the more risk-averse agent has a lower raw CE return ($CE_i^M / W_{i,t} = (1+r)\exp(\theta^2 / 2\gamma_i)$), so an inequality-averse planner on raw CEs would transfer wealth from Agent 1 to Agent 2 purely to compensate Agent 2 for being more risk-averse.
+        \item To fix this issue \citet{BalterSchweizer2024} propose the Certainty Equivalent Regret Ratio
+        \begin{equation*}
+            CER(\gamma, m) = \frac{CE(\gamma, m)}{CE(\gamma, m^*(\gamma))}
+        \end{equation*}
+        where $CE(\gamma, m^*(\gamma))$ is the agent's unconstrained Merton certainty equivalent (again in their notation). We replace the raw $CE_{i,t}^k$ with the Equivalent Contribution at Market Prices $m_i^k = \min\{\pi_t(X) : \E(u_i(X)) \ge \E(u_i(W_i^k))\}$. In the CRRA complete-market lognormal setting of Section \ref{Sect:Example}, an agent with endowment $m_i^k$ investing optimally in the Merton portfolio achieves certainty equivalent $m_i^k (1+r)\exp(\theta^2 / 2\gamma_i) = m_i^k (CE_{i,t}^M / W_{i,t})$. Setting this equal to $CE_{i,t}^k$ yields:
+        \begin{equation*}
+            \frac{m_i^k}{W_{i,t}} = \frac{CE_{i,t}^k}{CE_{i,t}^M} = CER(\gamma_i, k)
+        \end{equation*}
+        Hence, our wealth-normalized $m_i^k$ corresponds directly to the Certainty Equivalent Regret Ratio of \citet{BalterSchweizer2024}, provided that we look at the setting of Section \ref{Sect:Example} (where the authors work in a similar setting). While \citet{BalterSchweizer2024} motivate this ratio via \citet{Savage_1972}, we utilize the idea of \citet{FleurbaeyManiquet2011} money-metric utility, which gives us the added power to decompose $m_i^k - W_{i,t} = T_i^k - D_i^k$ into value transfers ($T_i^k$) and deadweight loss ($D_i^k$) for general non-linear risk-sharing rules.
+    \end{itemize}
+\end{enumerate}
+Overall, while there are many similarities to \citet{BalterSchweizer2024} we extend the work of the two authors to a risk-sharing settings, where we look at several possibilities for sharing the risk among the members of the pension scheme. We do not consider ambiguity over the population distribution of risk aversion (like \citet{BalterSchweizer2024}), but try to determine the optimal social planner Pareto weights and look at robustness over the inequality parameter $\rho$. Furthermore, we allow for both CRRA preferences and also non-concave loss aversion utility of \citet{KahnemanTversky1979}. Finally, \citet{BalterSchweizer2024} look at only ex-ante aggregation of certainty equivalents, while we also consider the situation in which we can penalize intra-state lotteries.

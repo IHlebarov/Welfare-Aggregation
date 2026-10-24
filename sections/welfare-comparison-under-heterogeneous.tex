@@ -1,0 +1,155 @@
+\section{Welfare Comparison under Heterogeneous Participants with Unique Social Planner Weights}
+\label{Sect:Het_Participants_Unique_Weights}
+The comparisons in Section \ref{Sect:Results} evaluate rules through certainty equivalent of a single representative agent, given the homogeneity of the participants in the pension scheme. Once members differ in their initial wealth or behavioral parameters, i.e., $(W_{i,t}, a_i, b_i, \eta_i)$, no representative agent is available. Comparing risk-sharing rules then becomes nontrivial. We need now an individual welfare measure, a way of weighting individuals and a scalar aggregate for the whole scheme. Throughout, we consider a pool of $n=5$ participants with $W_{i,t} \in \{0.5, 0.75, 1.0, 1.5, 2.25\}$ and KT parameters of $a=b=0.88$ and $\eta = 2.25$. The LEL-CE allocation with $\epsilon = 0.005 W_t$ is the baseline. 
+
+Firstly, we formally define individual certainty equivalents and the percentage relative change relative to initial wealth for a specific risk-sharing rule.
+\begin{definition}
+    For allocation rule $k$ and participant $i$, the individual certainty equivalent and its percentage change relative to initial wealth are:
+    \begin{equation}
+        CE_{i,t}^k = u_{i,t}^{-1}\Big( \E_t^{\P}\big[u_{i,t}(W_{i,t+1}^k)\big] \Big), \qquad \%\Delta CE_{i,t}^k = 100 \times \frac{CE_{i,t}^k - CE_{i,t}^{\text{LEL-CE}}}{W_{i,t}},
+    \end{equation}
+    where $u_{i,t}$ is the true behavioral KT loss aversion utility function.
+\end{definition}
+If $CE_{i,t}^k \geq CE_{i,t}^{k'}$ for every $i$, we say that rule $k$ Pareto-dominates rule $k'$. The concave envelope $\tilde{u}_{i,t}$ is used to construct the LEL-CE rule, not to evaluate it. Its influence on how a rule is assessed is summarized by the relaxation effect
+\begin{equation*}
+    \Delta_i^{\text{CE}}(k) = u_{i,t}^{-1}\Big(\E_t^\P(\tilde{u}_{i,t}(W_{i,t+1}^k))\Big) - CE_{i,t}^k \geq 0,
+\end{equation*}
+the amount by which the concave envelope overstates the rule's certainty equivalent. It is zero whenever the allocation avoids the interval $(0, z_i)$, where the envelope and the true utility differ. The relaxation effect also has a direct economic interpretation. It equals the CE loss when members adhere to deterministic "shared fate" rather than exploiting the risk-seeking convexity of the loss domain. In Table \ref{tab:relaxation_effect} we showcase the relaxation effect for some of the rules in the heterogeneous pool.
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Relaxation effect $\Delta_i^{\text{CE}}(k)$, in \% of $W_{i,t}$ (identical across members)}
+  \label{tab:relaxation_effect}
+  \vspace{0.5em}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l cccccc @{}}
+    \toprule
+    \textbf{Market} & \textbf{Prop} & \textbf{Prop LLA} & \textbf{LEL-CE ($\epsilon \to 0$)} & \textbf{LEL-CE} & \textbf{LEL-CE rand} & \textbf{Global AD} \\
+    \midrule
+    A & 0.8270 & 0.6030 & 0.1597 & 0.1682 & 0.0000 & 0.0000 \\
+    B & 0.9785 & 0.5339 & 1.2529 & 1.2956 & 0.0000 & 0.0000 \\
+    C & 1.4881 & 1.3171 & 0.0432 & 0.0000 & 0.0000 & 0.0000 \\
+    D & 0.5360 & 0.3578 & 0.1467 & 0.1306 & 0.0000 & 0.0000 \\
+    E & 0.5741 & 0.3891 & 0.1456 & 0.1295 & 0.0000 & 0.0000 \\
+    F & 1.0598 & 0.7950 & 0.0264 & 0.0000 & 0.0000 & 0.0000 \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+Later we will show that for the LEL-CE rule, the relaxation effect equals the gain of its randomized version. For proportional sharing, it equals the gain of the uncapped optimal LLA rule over proportional sharing in Table \ref{tab:welfare_diff_LEL} of Section \ref{Sect:Results} of 0.83\% of $W_{i,t}$ in market $A$. The uncapped optimal LLA rule is precisely the concavification lottery of the proportional allocation. Essentially, the relaxation effect therefore measures the welfare that members give up when the fund does not randomize.
+
+As shown by \citet{Pazderaetal2017} and \citet{NgNguyen2025}, the LEL-CE rule comes with a unique vector of market-consistent social planner Pareto weights $\alpha^*$. Following \citet{DavilaSchaab2025}, we hold these weights fixed across rules, so that differences in welfare are not driven by differences in weights. However, there are two important caveats. Firstly, the weights need a normalization. Replacing $u_{i,t}$ by $c_i u_{i,t}$ represents the same preferences with weight $\alpha_i/c_i$. Pareto weights acquire an interpersonal meaning only once utilities are normalized (see \citet{Harsanyi1955} and \citet{dAspremontGevers1977}). A possible normalization in the KT loss aversion case is at the reference outcome $\text{ref}_{i,t} = (1+r) W_{i,t}$. In our case this amounts to
+\begin{equation}
+    u^N_{i,t}(x)=W_{i,t}^{1-a}\,u_{i,t}(x)=W_{i,t}\,v(x/W_{i,t}),
+\end{equation}
+where $v$ is the KT utility per unit of contribution, i.e., 
+\begin{equation}
+    \label{eq:Loss_Averion_Per_Unit_Contribution}
+    v(y) = \begin{cases} (y - (1+r))^a & \text{if } y \ge 1+r \\ -\eta ((1+r) - y)^a & \text{if } 0 \le y < 1+r \end{cases}
+\end{equation}
+for any $y = x/W_{i,t}$. Secondly, the market consistent weights are Negishi weights \citep{Negishi1960}. Each $\alpha_i^*$ is inversely proportional to member i's marginal utility of wealth when she invests her own wealth optimally. With common preferences, the LEL-CE allocation is homothetic and $\alpha_i^* \propto W_{i,t}^{1-a}$. In our pool, $\alpha^* = (0.1826, 0.1917, 0.1985, 0.2084, 0.2188)$, which is exactly uniform under the normalization. Moreover, every rule changes all participants' certainty equivalent by the same percentage, so every comparison is a Pareto comparison. Distributional trade-offs require heterogeneous preferences, which will be discussed in the example of Section \ref{Sect:Example}.
+
+For fixed weights, we will define the notion of social certainty equivalent (SCE) using the Pareto-weighted social welfare maximizer:
+\begin{equation}
+    G_{\alpha}(c)=\max_{x\ge0,\ \sum_ix_i=c}\ \sum_{i=1}^n\alpha_i u_{i,t}(x_i).
+\end{equation}
+Then the SCE for rule $k$ is given by
+\begin{equation}
+    SCE^k_{\alpha}=G_{\alpha}^{-1}\Big(\sum_{i=1}^n\alpha_i\,\E^{\P}_t\big(u_{i,t}(W^k_{i,t+1})\big)\Big),
+\end{equation}
+which, for fixed $\alpha$, ranks rules exactly as the weighted sum of expected utilities does, while converting that sum into certain aggregate wealth. In the following proposition we establish the relation between the SCE and the individual CEs.
+\begin{proposition}
+\label{Prop:SCE_relation}
+    If the function $G_{\alpha}: \mathbb{R}_+ \to \mathbb{R}$ is defined under the true loss aversion\footnote{In the sense of Section 4 in \citet{Hlebarov_2026_MSc_Thesis}.}, then for every rule and every weight vector
+    \begin{equation*}
+        \min_iCE^k_{i,t}\ \le\ SCE^k_\alpha\ \le\ \sum_iCE^k_{i,t}.
+    \end{equation*}
+\end{proposition}
+The upper bound is reached when the CE vector is itself an efficient division (i.e., we have equalized weighted marginal utilities at the CEs for all agents) of $\sum_i CE_{i,t}^k$. This holds exactly under CARA \citep{Wilson1968} and identical CRRA preferences, and approximately for heterogeneous concave preferences. Note that under loss aversion the upper bound is not attained for which the $G$-function is responsible and not the specific rule. For tractably solving the model, $G$ is built from the concave envelopes. Hence, for a rule that gives every member the same relative certainty equivalent $y_k = CE_{i,t}^k/W_{i,t}$, the SCE has the closed from solution
+\begin{equation}
+    \label{eq:SCE_gap}
+    SCE^k_{\alpha^*}=W_t\,\tilde v^{-1}\big(v(y_k)\big)\ \le\ W_t\,y_k=\sum_{i=1}^n CE^k_{i,t},
+\end{equation}
+where $\tilde{v}$ is the concave envelope of $v$. The inequality is strict whenever $y_k$ lies below the tangency point $z_i/W_{i,t}$. The Pareto-weighted maximizer $G$ values a sure aggregate as if it could be divided in a loser-loses-all fashion. Defining the efficiency gain of rule $k$ as
+\begin{equation*}
+    \mathcal{E}^k=\sum_{i=1}^n\big(CE^k_{i,t}-CE^{\text{LEL-CE}}_{i,t}\big),
+\end{equation*}
+we have that the SCE can be split into the efficiency gain and the SCE gap from \eqref{eq:SCE_gap}, in the spirit of \citet{DavilaSchaab2025}. Hence, in Table \ref{tab:welfare_relative_lel}, we exactly showcase this for some of the allocation rules we have been discussing and all market states.
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Welfare relative to LEL-CE, in \% of $W_t$}
+  \label{tab:welfare_relative_lel}
+  \vspace{0.5em}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l rrrrrr @{}}
+    \toprule
+    \textbf{Market} & \textbf{Prop} & \textbf{Prop LLA} & \textbf{LEL-CE ($\epsilon \to 0$)} & \textbf{LEL-CE} & \textbf{LEL-CE rand} & \textbf{Global AD} \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textit{\textbf{Panel A: Efficiency gain}}} \\
+    \addlinespace[0.2em]
+    A & $-1.2077$ & $-0.9837$ & $-0.1408$ & $0$ & $0.1682$ &  $0.4077$ \\
+    B & $-0.3782$ &  $0.0663$ & $-0.6458$ & $0$ & $1.2956$ & $20.7640$ \\
+    C & $-4.1417$ & $-3.9708$ & $-0.0714$ & $0$ & $0.0000$ &  $0.0009$ \\
+    D & $-0.8559$ & $-0.6776$ & $-0.3430$ & $0$ & $0.1306$ &  $1.3287$ \\
+    E & $-0.8343$ & $-0.6493$ & $-0.2541$ & $0$ & $0.1295$ &  $1.1450$ \\
+    F & $-2.2696$ & $-2.0048$ & $-0.0365$ & $0$ & $0.0000$ &  $0.0000$ \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textit{\textbf{Panel B: SCE gap}}} \\
+    \addlinespace[0.2em]
+    A & $-0.8089$ & $-0.6891$ & $-0.0760$ & $0$ & $0.0000$ & $0.0000$ \\
+    B &  $0.0000$ &  $0.0000$ & $-0.0000$ & $0$ & $0.0000$ & $0.0000$ \\
+    C & $-1.9387$ & $-1.8875$ & $-0.0400$ & $0$ & $0.0000$ & $0.0000$ \\
+    D & $-0.4695$ & $-0.3452$ & $-0.0287$ & $0$ & $0.0000$ & $0.0000$ \\
+    E & $-0.5143$ & $-0.3906$ & $-0.0319$ & $0$ & $0.0000$ & $0.0000$ \\
+    F & $-1.3134$ & $-1.2067$ & $-0.0301$ & $0$ & $0.0000$ & $0.0001$ \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+From the discussion above, it is clear that summing up the values in the two panels above would lead to the raw SCE for each allocation rule $k$. Clearly the rules are ranked from left to right when it comes to efficiency in comparison to the LEL-CE rule. The SCE gap seems to be quite noticeable when it appears, resulting in a bit less than $2\%$ losses in some market states. We also showcase in Table \ref{tab:ce_distribution}, the summary statistics of the individual CE distribution across the agents.
+\begin{table}[!htbp]
+  \centering
+  \small
+  \caption{Individual Certainty Equivalent ($\text{CE}_i$) Distribution Across Agents}
+  \label{tab:ce_distribution}
+  \vspace{0.4em}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l rrrrrr @{}}
+    \toprule
+    Market Regime & Prop & Prop LLA & LEL-CE ($\epsilon \to 0$) & LEL-CE & LEL-CE rand & Global AD \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textbf{Panel A: Minimum $\text{CE}_i$}} \\
+    \addlinespace[0.2em]
+    A     & $0.5094$ & $0.5106$ & $0.5148$ & $0.5155$ & $0.5163$ & $0.5175$ \\
+    B      & $0.5176$ & $0.5198$ & $0.5163$ & $0.5195$ & $0.5260$ & $0.6233$ \\
+    C  & $0.4946$ & $0.4954$ & $0.5149$ & $0.5153$ & $0.5153$ & $0.5153$ \\
+    D     & $0.5124$ & $0.5133$ & $0.5149$ & $0.5167$ & $0.5173$ & $0.5233$ \\
+    E    & $0.5120$ & $0.5130$ & $0.5149$ & $0.5162$ & $0.5168$ & $0.5219$ \\
+    F   & $0.5038$ & $0.5051$ & $0.5149$ & $0.5151$ & $0.5151$ & $0.5151$ \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textbf{Panel B: Maximum $\text{CE}_i$}} \\
+    \addlinespace[0.2em]
+    A       & $2.2925$ & $2.2975$ & $2.3165$ & $2.3196$ & $2.3234$ & $2.3288$ \\
+    B     & $2.3293$ & $2.3393$ & $2.3232$ & $2.3378$ & $2.3670$ & $2.8051$ \\
+    C  & $2.2255$ & $2.2293$ & $2.3171$ & $2.3187$ & $2.3187$ & $2.3187$ \\
+    D     & $2.3057$ & $2.3097$ & $2.3172$ & $2.3250$ & $2.3279$ & $2.3548$ \\
+    E     & $2.3041$ & $2.3083$ & $2.3172$ & $2.3229$ & $2.3258$ & $2.3487$ \\
+    F    & $2.2670$ & $2.2729$ & $2.3172$ & $2.3180$ & $2.3180$ & $2.3180$ \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textbf{Panel C: Interquartile Range (IQR $\text{CE}_i$)}} \\
+    \addlinespace[0.2em]
+    A       & $0.7642$ & $0.7658$ & $0.7722$ & $0.7732$ & $0.7745$ & $0.7763$ \\
+    B      & $0.7764$ & $0.7798$ & $0.7744$ & $0.7793$ & $0.7890$ & $0.9350$ \\
+    C  & $0.7418$ & $0.7431$ & $0.7724$ & $0.7729$ & $0.7729$ & $0.7729$ \\
+    D      & $0.7686$ & $0.7699$ & $0.7724$ & $0.7750$ & $0.7760$ & $0.7849$ \\
+    E     & $0.7680$ & $0.7694$ & $0.7724$ & $0.7743$ & $0.7753$ & $0.7829$ \\
+    F    & $0.7557$ & $0.7576$ & $0.7724$ & $0.7727$ & $0.7727$ & $0.7727$ \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textbf{Panel D: Mean Percentage Change in Certainty Equivalent ($\text{Mean }\%\Delta\text{CE}_i$)}} \\
+    \addlinespace[0.2em]
+    A      & $-1.2077$ & $-0.9837$ & $-0.1408$ & $0.0000$ & $0.1682$ &  $0.4077$ \\
+    B       & $-0.3782$ &  $0.0663$ & $-0.6483$ & $0.0000$ & $1.2965$ & $20.7667$ \\
+    C  & $-4.1417$ & $-3.9708$ & $-0.0714$ & $0.0000$ & $0.0000$ &  $0.0009$ \\
+    D      & $-0.8559$ & $-0.6776$ & $-0.3430$ & $0.0000$ & $0.1306$ &  $1.3287$ \\
+    E     & $-0.8343$ & $-0.6493$ & $-0.2541$ & $0.0000$ & $0.1295$ &  $1.1450$ \\
+    F    & $-2.2696$ & $-2.0048$ & $-0.0365$ & $0.0000$ & $0.0000$ &  $0.0000$ \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+As we can see Panel D of Table \ref{tab:ce_distribution} coincides with Panel A from Table \ref{tab:welfare_relative_lel} coming from the way in which we have defined the efficiency gain.

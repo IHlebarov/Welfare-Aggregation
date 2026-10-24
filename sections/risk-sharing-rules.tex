@@ -1,0 +1,77 @@
+\section{Risk-Sharing Rules}
+\label{Sect:Risk-Sharing_Rules}
+To quantify the welfare losses coming from performing the LEL-CE allocation structure we consider the following eight allocation rules:
+\begin{enumerate}
+    \item \textbf{The Proportional Allocation}
+    
+    Similarly to what was done in Section 6 (Numerical Examples) of the thesis, we will consider the simple collective proportional sharing given by
+    \begin{equation*}
+        W_{i,t+1}^{\text{prop}} = \frac{W_{i,t}}{W_t} W_{t+1}
+    \end{equation*}
+
+    \item \textbf{The Proportional "Loser-Loses-All" Allocation} 
+    
+    By the Counter-monotonic Improvement Theorem the (possibly) randomized proportional "loser-loses-all" allocation, denoted by $W_{i,t+1}^{\text{prop LLA}}$, where the surplus is shared proportionally, following what was described in the Loss Aversion and Market Consistency document;
+    \item \textbf{Optimal Capped "Loser-Loses-All" Allocation}
+    
+    Similar to the allocation above, we have a "loser-loses-all" allocation when again the "losers" are chosen at random, while the surplus is shared, following the Borch condition. The allocation is with a capped loss of $\delta = 0.20$ and denoted by $W_{i,t+1}^{\text{opt LLA (cap)}}$;
+
+    \item \textbf{Optimal uncapped "Loser-Loses-All" Allocation}
+    
+    Like the allocation above but with the bound $\delta = 1$, leading to full exhaustion of the accumulated wealth when selected as a "loser". It is denoted by $W_{i,t+1}^{\text{opt LLA (free)}}$;
+    \item \textbf{The LEL-CE Zero Loss Allocation}
+    This mirrors the nominal (in the scenarios of the DNB) guarantee analyzed by \citet{KokkenNijmanWerker2024}, given by
+    \begin{equation*}
+        W_{i,t+1}^0 = \lim_{\epsilon \to 0} W_{i,t+1}^{\text{LEL-CE}},
+    \end{equation*}
+    where $W_{i,t+1}^{\text{LEL-CE}}$ is described in the next point;
+    \item \textbf{The LEL-CE Allocation}
+    
+    This follows exactly the framework described in Section 4.6 of the thesis, that combines the ideas of \citet{NgNguyen2025} and \citet{Dong2020}, with the allocation denoted by $W_{i,t+1}^{\text{LEL-CE}}$. We take the bound $\epsilon = 0.005 \times W_{t}$;
+
+    \item \textbf{The LEL-CE Randomized Allocation}
+    
+    The main issue with rules 2 and 3 is that they are only ex-post sharing rules, i.e., they do not determine and influence the aggregate wealth in the next period in any way. On the other hand, the LEL-CE enforces a trading strategy to achieve its bound. Therefore, a sensible approach is to randomize in a "loser-loses-all" fashion the LEL-CE aggregate to see the effects of randomization. It is denoted by $W_{i,t+1}^{\text{LEL-CE rand}}$ and is the randomization similarly to rules 3 and 4;
+
+    \item \textbf{The Global Arrow-Debreu Optimum}
+    
+    This is the unconstrained global theoretical optimum under a complete-market loss aversion optimization. The idea is that now the investment strategy for the fund is also determined on the "loser-loses-all" basis, taking extreme bets, e.g., decreasing the probability of a loss, but increasing the magnitude of it if it occurs. It is denoted by $W_{i,t+1}^{\text{global AD}}$, and it serves as an upper bound for the problem.
+\end{enumerate}
+The last risk-sharing rule deserve more attention as it has not been treated before (for the other rules check the previous methodology and/or the MSc Thesis). Letting a fund aware of the "loser-loses-all" nature of optimal allocations choose not only the allocation structure but also the investment strategy leads to dropping the usual feasibility constraint and replacing it with an aggregate budget that the fund may trade. The social planner problem then is:
+\begin{equation*}
+    \max_{\{W_{i,t+1}\}} \sum_{i=1}^n \alpha_{i,t} \E_t^\P(\tilde{u}_{i,t}(W_{i,t+1})) \quad \text{s.t.} \quad \E_t^{\P}\left(\xi_{t+1} W_{i,t+1} \right) = W_{i,t},
+\end{equation*}
+where the last holds for all agents $i$. The problem is defined in terms of the concave envelope. The Lagrangian is given by
+\begin{equation*}
+    \mathcal{L} = \sum_{i=1}^n \alpha_{i,t} \E_t^\P(\tilde{u}_{i,t}(W_{i,t+1})) - \sum_{i=1}^n \lambda_{i,t} \left( \E_t^\P[\xi_{t+1} W_{i,t+1}] - W_{i,t} \right)
+\end{equation*}
+Solving the FOC leads to
+\begin{equation*}
+    \alpha_{i,t} \tilde{u}_{i,t}'(W_{i,t+1}) = \lambda_{i,t} \xi_{t+1}
+\end{equation*}
+The first-order derivative of the concave envelope is also piecewise and is
+\begin{equation*}
+    \tilde{u}_{i,t}'(x) = \begin{cases} a(x - \text{ref}_{i,t})^{a-1} & \text{if } x \ge z_i \\ c_{z_i} & \text{if } 0 \le x < z_i \end{cases}
+\end{equation*}
+with $z_i$ and $c_{z_i}$ as defined in the thesis. In prosperous states (low state price) the optimum lies in the concave branch, i.e., $W_{i,t+1} \geq z_i$, resulting in
+\begin{equation*}
+    W_{i,t+1}^* = \text{ref}_{i,t} + \left( \frac{\lambda_{i,t} \xi_{t+1}}{\alpha_{i,t} a} \right)^{\frac{1}{a-1}}
+\end{equation*}
+In downturn states (high state price), then the cost $\lambda_{i,t} \xi_{t+1} > \alpha_{i,t} c_{z_i}$ on $[0, z_i]$, the maximized at the boundary:
+\begin{equation*}
+    W_{i,t+1}^* = 0
+\end{equation*}
+Hence, the optimal allocation is:
+\begin{equation*}
+    W_{i,t+1}^* = \begin{cases} \text{ref}_{i,t} + \left( \frac{\lambda_{i,t} \xi_{t+1}}{\alpha_{i,t} a} \right)^{\frac{1}{a-1}} & \text{if } \xi_{t+1} < \frac{\alpha_{i,t} c_{z_i}}{\lambda_{i,t}} \\ 0 & \text{if } \xi_{t+1} \ge \frac{\alpha_{i,t} c_{z_i}}{\lambda_{i,t}} \end{cases}
+\end{equation*}
+Note that the Lagrange multiplier $\lambda_{i,t}$ is solved numerically as the unique root of:
+\begin{equation*}
+    \E_t^\P\left( \xi_{t+1} \left( \text{ref}_{i,t} + \left( \frac{\lambda_{i,t} \xi_{t+1}}{\alpha_{i,t} a} \right)^{\frac{1}{a-1}} \right) \1_{\left\{\xi_{t+1} < \frac{\alpha_{i,t} c_{z_i}}{\lambda_{i,t}}\right\}} \right) = W_{i,t}
+\end{equation*}
+Note that the optimal solution is defined for two specific regions of the concave envelope:
+\begin{itemize}
+    \item At $x=0$ we get that $\tilde{u}_{i,t}(0) = - \eta (\text{ref}_{i,t})^b = u_{i,t}(0)$;
+    \item At all points $x \geq z_i$ we know that by construction $\tilde{u}_{i,t}(x) = u_{i,t}(x)$
+\end{itemize}
+Therefore, solving the social planner problem in the global Arrow-Debreu framework for the concave envelope is equivalent to solving the problem for the true loss aversion utility.

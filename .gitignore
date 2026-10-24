@@ -1,0 +1,4 @@
+# What LaTeX writes is no part of a paper. With latexmk it all goes into one
+# folder (.latexmkrc), kept out here; TilTeX itself compiles elsewhere and
+# leaves nothing in the paper.
+build/

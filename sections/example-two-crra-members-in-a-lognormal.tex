@@ -1,0 +1,83 @@
+\section{Example: Two CRRA Members in a Lognormal Market}
+\label{Sect:Example}
+We consider a simple setting with two CRRA members in a lognormal market, which allows us to compute the two criteria in a closed form. The setting is given by:
+\begin{itemize}
+    \item Two members with equal contributions $W_{1,t} = W_{2,t} = 1$ and CRRA utility as defined in Section 2 of \citet{Hlebarov_2026_MSc_Thesis}. The utility is normalized as described in Section \ref{Sect:Het_Participants_Unique_Weights} with $\text{ref}_{i,t} = 1.03$. Participant 1 has risk aversion $\gamma_1 = 2$, while agent 2 has $\gamma_2 \geq 2$;
+    \item We work in market A as a complete lognormal market, with a Sharpe ratio $\theta = 0.1914$;
+    \item For simplicity a fund holds half its wealth in the risky asset and half in bonds (risk-free asset), so the aggregate payoff has a positive floor.
+\end{itemize}
+We will only compare the following three simple rules, in order to strip down the complexity of the risk-sharing rule and only focus on the machinery from Sections \ref{Sect:Het_Participants_Unique_Weights} and \ref{Sect:Non-Unique_Weights}:
+\begin{enumerate}
+    \item \textbf{P:} the proportional risk-sharing rule as discussed earlier;
+    \item \textbf{B:} the Borch-efficient market-consistent sharing of the fund's payoff (i.e., the PEMC allocation from \citet{Hlebarov_2026_MSc_Thesis}\footnote{Apologies for citing the thesis so much.}), which redistributes a given aggregate like some of the ex post rules of Section \ref{Sect:Risk-Sharing_Rules};
+    \item \textbf{M:} the complete-market PEMC rule, in which the fund is also allowed to choose the aggregate payoff. M can be thought of the CRRA counterpart of LEL-CE with a non-binding LEL constraint.
+\end{enumerate}
+Under M and due to market completeness, each member receives his Merton payoff, so $CE_i^M = \text{ref}_{i,t} e^{\theta^2/2\gamma_i}$. The market-consistent weights are $\alpha^*_i\propto e^{-\theta^2/(2\gamma_i)}$: unique, close to uniform and independent of the unit of account. Under the wealth scaling of CRRA utility, the same weights depend on the unit of account: with $\gamma_2=4$ they are $(0.48,\,0.52)$ when wealth is measured as $1$, and $(10^{-6},\,1)$ when the same wealth is measured as $1000$. Table \ref{tab:crra_findings} looks at various criteria for each of the three allocations in order to make a complete comparison. Each panel includes varying levels of risk aversion for the second member.
+\begin{table}[!htbp]
+  \centering
+  \footnotesize
+  \caption{Two CRRA members: utility aggregation (SCE) versus certainty-equivalent aggregation}
+  \label{tab:crra_findings}
+  \setlength{\tabcolsep}{2.5pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l rr rrrrr rrr @{}}
+    \toprule
+    & \multicolumn{2}{c}{Individual} & \multicolumn{5}{c}{Utility aggregation (SCE)} & \multicolumn{3}{c}{CE aggregation} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-8}\cmidrule(l){9-11}
+    Rule & $CE_1$ & $CE_2$ & $\Delta SCE_{\alpha^*}$ & $\Delta SCE_{1/2}$ & $\min_{\mathcal A_{5\%}}\!\Delta SCE$ & $\hat\kappa_u$ & Gap & $\Delta\mathcal C_{\alpha^*}$ & $\hat\kappa_c$ & $\hat\kappa_g$ \\
+         & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9) & (10) \\
+    \midrule
+    \multicolumn{11}{@{}l}{\textbf{Panel A:} $\gamma=(2,4)$;\ $\alpha^*=(0.4989,\,0.5011)$;\ $\mathcal A_{5\%}$: $\alpha_1\in[0.425,\,0.574]$} \\
+    \addlinespace[0.2em]
+    P & 1.03902 & 1.03320 & $-0.0993$ & $-0.0965$ & $-0.1123$ & ---    & 0.04 & $-0.0991$ & ---    & ---    \\
+    B & 1.03943 & 1.03471 & $-0.0031$ & $-0.0031$ & $-0.0031$ & Pareto & 0.01 & $-0.0031$ & Pareto & Pareto \\
+    M & 1.03948 & 1.03473 & $0$       & $0$       & $0$       & Pareto & 0.01 & $0$       & Pareto & Pareto \\
+    \midrule
+    \multicolumn{11}{@{}l}{\textbf{Panel B:} $\gamma=(2,16)$;\ $\alpha^*=(0.4980,\,0.5020)$;\ $\mathcal A_{5\%}$: $\alpha_1\in[0.291,\,0.713]$} \\
+    \addlinespace[0.2em]
+    P & 1.03902 & 1.00142 & $-1.8705$ & $-1.2959$ & $-3.7111$ & ---     & 35.97 & $-1.5167$ & ---     & ---     \\
+    B & 1.03800 & 1.03100 & $-0.0825$ & $-0.0825$ & $-0.0816$ & 18.5\% & 0.01  & $-0.0822$ & 17.4\% & 94.1\% \\
+    M & 1.03948 & 1.03118 & $0$       & $0$       & $0$       & Pareto  & 0.01  & $0$       & Pareto  & Pareto  \\
+    \midrule
+    \multicolumn{11}{@{}l}{\textbf{Panel C:} $\gamma_2\to\infty$;\ $\alpha^*\to(0.4977,\,0.5023)$} \\
+    \addlinespace[0.2em]
+    \multicolumn{11}{@{}l}{\quad\textit{$\gamma_2=256$;\ $\mathcal A_{5\%}$: $\alpha_1\in[3\cdot10^{-6},\,0.999998]$}} \\
+    P & 1.03902 & 0.76314 & $-65.3207$ & $-64.0289$ & $-13.5616$ & ---     & 5195.10 & $-13.4303$ & ---    & ---     \\
+    B & 1.03655 & 1.03005 & $-0.1476$  & $-0.1476$  & $-0.0018$  & 25.8\% & 0.00    & $-0.1469$  & 1.8\% & 99.1\% \\
+    M & 1.03948 & 1.03007 & $0$        & $0$        & $0$        & Pareto  & 0.00    & $0$        & Pareto & Pareto  \\
+    \addlinespace[0.2em]
+    \multicolumn{11}{@{}l}{\quad\textit{$\gamma_2\to\infty$ (limit);\ $\mathcal A_{5\%}$: the open simplex}} \\
+    P & 1.03902 & 0.51500 & $-77.7238$ & $-76.2238$ & $-25.7500$ & ---         & 5195.10 & $-25.8906$ & ---      & ---     \\
+    B & 1.03642 & 1.03000 & $-0.1530$  & $-0.1530$  & $0.0000$   & $\to50\%$  & 0.00    & $-0.1523$  & $\to0$   & 99.9\% \\
+    M & 1.03948 & 1.03000 & $0$        & $0$        & $0$        & Pareto      & 0.00    & $0$        & Pareto   & Pareto  \\
+    \bottomrule
+  \end{tabular*}
+  \vspace{0.3em}
+
+  \begin{minipage}{\textwidth}
+  \footnotesize\textit{Notes:} Both members contribute $W_{i,t}=1$ ($W_t=2$); $\gamma_1=2$; market A; fund equity share $\pi_F=1/2$.
+  Columns (3)--(5) and (8) are changes relative to M in \% of $W_t$.
+  (3)~SCE at the market-consistent weights $\alpha^*$; since these weights are recomputed under any rescaling of utilities, the column does not depend on the normalisation.
+  (4)~SCE with equal weights and the textbook scaling $u_i(x)=(x^{1-\gamma_i}-1)/(1-\gamma_i)$.
+  (5)~Each rule evaluated at its own worst-case weights in $\mathcal A_{5\%}$, relative to the worst case of M.
+  (6), (9)~Robustness radius of the rule over P on $\mathcal A_\kappa$, utility and CE version; (10)~on the money band $\mathcal G_\kappa$; ``Pareto'': the rule Pareto-dominates P.
+  (7)~$\sum_iCE_i-SCE_{\alpha^*}$ in basis points of $W_t$.
+  (8)~$\mathcal C_{\alpha^*}=n\sum_i\alpha^*_iCE_i$.
+  Rows $\gamma_2\to\infty$ are analytic limits; there $\mathcal A_{5\%}$ is the open simplex and column (5) gives full-simplex values.
+  \end{minipage}
+\end{table}
+Here is the explanation of the ten available columns:
+\begin{enumerate}[(1)]
+    \item $CE_1$: the certainty equivalent of agent 1;
+    \item $CE_2$: the certainty equivalent of agent 2;
+    \item $\Delta SCE_{\alpha^*}$, which uses the machinery from Section \ref{Sect:Het_Participants_Unique_Weights}, with the SCE being computed at the market-consistent weights;
+    \item $\Delta SCE_{1/2}$, which uses the same machinery, but with equal weights, i.e., $\alpha_1 = \alpha_2 = 1/2$ as a robustness check;
+    \item $\min_{\mathcal{A}_{5\%}} \Delta SCE$, which serves as the second criterion from Section \ref{Sect:Non-Unique_Weights} over the relaxed market consistency set;
+    \item $\hat{\kappa}_u$, which is the Pareto-dominance criterion from Section \ref{Sect:Non-Unique_Weights}. Entries with "Pareto" mean the rule Pareto-dominates rule $P$;
+    \item $\text{Gap} = \sum_i CE_i - SCE_{\alpha^*}$ as a basis point deviation from $W_t$;
+    \item $\Delta \mathcal{C}_{\alpha^*}$, where $\mathcal{C}_{\alpha^*} = n \sum_i \alpha_i CE_i$, which is simply the CE counterpart of (3), with the weights being fixed;
+    \item $\hat{\kappa}_c$ is the $\sum_i \alpha_i CE_i$, i.e., the second criterion from Section \ref{Sect:Non-Unique_Weights}, using the CE instead of the utility levels;
+    \item $\hat{\kappa}_g$ is the same CE comparison on the money band $\mathcal{G}_\kappa$ as described in Section \ref{Sect:Non-Unique_Weights}.
+\end{enumerate}
+From Panel A, we clearly see that rule M is preferred over rule B, which is preferred over rule P in the Pareto sense. Every criterion gives the same ranking, where utility aggregation coincides with the CE one. Equal weights do not seem to matter a lot for welfare with every comparison being robust as all columns (6), (9) and (10) show Pareto-domination. Panel B becomes more interesting as the restricted sets become more information and the SCE starts to diverge from the sum of individual CEs. Relative to P, B raises $CE_2$ by 2.96\% of $W_{2,t}$ and lowers $CE_1$ by 0.10\%. The SCE becomes more sensitive to the choice of weights. B dominates P on $\mathcal{A}_{\kappa}$ up to $\kappa = 18.5\%$ in the utility version and $17.4\%$ in the CE version. B beats P on the money band up to $\kappa=94.1\%$, i.e. unless a euro to member 1 is valued more than 29 times a euro to member 2, coming from the definition of the money-band $\mathcal{G}_\kappa$. Clearly, the worst-case depends strongly on the weights as we can see in (5). From Panel C, however, we can see that utility aggregation fails to be informative. Here, the SCE rule collapses as P's SCE loss is -65.3, which is five times the CE-based loss of -13.4 for $\gamma_2 = 256$, where for $\gamma_2 \to \infty$ the values are -77.7 and -25.9 respectively. Clearly the three kappa columns diverge - $\hat{\kappa}_u$ stays bounded but rises from 18.5\% to 25.8\% and to 50\% in the limit. Hence, in the limit it measures only member 2's protection under P as $\pi_F = 50\%$. Moreover, $\hat{\kappa}_c$ collapses from 17.4\% to 1.8\% and to 0. At $\gamma_2 = 256$, a value of 1.8\% already admits weights of 108:1 in favor of member 1. In this case, only $\hat{\kappa}_g$ remains the robust measure.
+
+Overall, it seems like that the social planner-based machinery from Sections \ref{Sect:Het_Participants_Unique_Weights} and \ref{Sect:Non-Unique_Weights} works well with concave utilities and moderate heterogeneity. However, utility-level aggregation fails when CEs lie below the reference points due to high risk aversion. Finally, relaxed market consistency using the set $\mathcal{A}_\kappa$ is a poor source of welfare weights whenever we have very risk-averse participants. This suggests the comparison in money rather than in utility units.

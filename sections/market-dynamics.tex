@@ -1,0 +1,18 @@
+\section{Market Dynamics}
+The aggregate fund wealth at time $t+1$ is generated over a discrete period $[t,t+1]$ on a probability space $(\Omega, \mathcal{F}, \P)$. To assess how distributional shape influences welfare independently of the risk premium, all market settings are standardized to share the identical expected return $\E^\P(R) = 1+\mu$, except one of the scenarios where the equity premium is lowered, which will be described below. Rather than relying on continuous Monte Carlo draws that induce sample noise into the root-finding procedures, which are used frequently in computing the allocation rules, terminal returns are represented via a discrete scenario set of $M$ atoms (simulations), given by $\{(R^{(m)}, p^{(m)})\}_{m=1}^M$ with $\sum_{m=1}^M p^{(m)} = 1$. The log gross return $\log(R) = \log(W_{t+1}/W_t)$ is modeled as an $N$-component Gaussian mixture:
+\begin{equation*}
+    \log(R) \sim \sum_{j=1}^N w_j \mathcal{N}(\mu_j, \sigma^2_j)
+\end{equation*}
+with $w_j$ being the weight of the particular component of the mixture $j$. To ensure mean matching, the log returns are shifted by an affine constant:
+\begin{equation*}
+    c = \log(1 + \mu) - \log\left(\sum_{m=1}^M p^{(m)} \exp(\log(R^{(m)}))\right)
+\end{equation*}
+such that $\E^\P(R) = \sum_{m=1}^M p^{(m)} R^{(m)} = 1 + \mu$ holds identically. We utilize the following market scenarios (with the risk-free rate being 3\% in all scenarios):
+\begin{enumerate}
+    \item[A:] (GBM Base) A classic GBM with a single lognormal component $\sigma = 15\%$ and $\mu = 6\%$, reflecting the Black-Scholes dynamics from the original methodology proposal;
+    \item[B:] (GBM Calm) Again a single lognormal component with low volatility $\sigma = 7\%$ and $\mu = 6\%$, where market shortfalls are rare and downside protection is inexpensive;
+    \item[C:] (GBM Turbulent) A single lognormal component with severe volatility $\sigma = 30\%$ and $\mu = 6\%$, yielding frequent, deep deficits and expensive downside protection;
+    \item[D:] (Fat Tails) A mixture of two normals - 90\% normal regime with same mean as above but $\sigma_1 = 10\%$ and 10\% volatile regime with $\mu_2 = -18\%$ and $\sigma_2 = 28\%$, preserving the overall volatility;
+    \item[E:] (Crash Jump) A mixture of 96\% normal regime with same mean and volatility $\sigma_1 = 11\%$ and 4\% market crash regime with $\mu_2 = -42\%$ and $\sigma_2 = 9\%$ that frequently breaches downside floors;
+    \item[F:] (Low Equity Premium) Identical to Scenario A volatility of 15\%, but with expected return of $\mu = 4\%$, which yields a 1\% risk premium above the 3\% risk-free rate, which penalizes the cost of downside guarantees.
+\end{enumerate}

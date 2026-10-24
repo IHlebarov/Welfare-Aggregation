@@ -1,0 +1,13 @@
+{
+	"template": 1,
+	"format": 1,
+	"languages": [
+		"en-US"
+	],
+	"words": {
+		"en": [],
+		"nl": []
+	},
+	"engine": "pdflatex",
+	"main": "Welfare-Aggregation.tex"
+}

@@ -1,0 +1,95 @@
+\section{Results}
+\label{Sect:Results}
+The results of the previously described simulations are given in Table \ref{tab:LEL_Results}, where we run 120 000 simulations with 10 identical agents. The loss aversion parameters are as in \citet{KahnemanTversky1992}, i.e., $a=b=0.88$ and $\eta = 2.25$.
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Comparison of risk-sharing rules under different market settings}
+  \label{tab:LEL_Results}
+  \vspace{0.5em}
+  % Custom centered column with wrapping:
+  \newcolumntype{Y}{>{\centering\arraybackslash}X}
+  \setlength{\tabcolsep}{3pt} % tighter horizontal padding between columns
+  \begin{tabularx}{\textwidth}{l *{8}{Y}}
+    \toprule
+    \textbf{Market} & 
+    \textbf{Prop} & 
+    \textbf{Prop} \newline \textbf{LLA} & 
+    \textbf{Opt LLA} \newline \textbf{(cap)} & 
+    \textbf{Opt LLA} \newline \textbf{(free)} & 
+    \textbf{LEL-CE} \newline \textbf{($\epsilon \to 0$)} & 
+    \textbf{LEL-CE} & 
+    \textbf{LEL-CE} \newline \textbf{rand} & 
+    \textbf{Global} \newline \textbf{AD} \\
+    \midrule
+    A      & 0.98919 & 0.99137 & 0.99137 & 0.99722 & 0.99955 & 1.00092 & 1.00255 & 1.00488 \\
+    B      & 1.00509 & 1.00940 & 1.00941 & 1.01459 & 1.00252 & 1.00879 & 1.02137 & 1.21038 \\
+    C & 0.96030 & 0.96196 & 0.96196 & 0.97475 & 0.99981 & 1.00051 & 1.00051 & 1.00052 \\
+    D     & 0.99491 & 0.99664 & 0.99664 & 1.00011 & 0.99989 & 1.00323 & 1.00449 & 1.01612 \\
+    E    & 0.99423 & 0.99603 & 0.99603 & 0.99981 & 0.99987 & 1.00232 & 1.00359 & 1.01345 \\
+    F   & 0.97819 & 0.98077 & 0.98077 & 0.98848 & 0.99987 & 1.00022 & 1.00022 & 1.00023 \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+The runtime of the full script is 669.0 seconds. Clearly the proportional rule is the biggest underperformer, given that it disregards completely the preferences of the agents. The proportional LLA rule improves on that, and sharing the surplus in a Borch-like fashion does not yield a meaningful improvement provided the loss limit of $\delta = 0.20$. Increasing the limit to $\delta = 1$ leads to improved welfare, due to the increased counter-monotonicity in the outcome. Then, applying the LEL-CE with $\epsilon \to 0$ is superior to the prior four allocation rules, but the lack of flexibility leads to welfare losses compared to the LEL-CE rule. Allowing for randomization logically leads to welfare improvement for the fund, but the difference is only largely noticeable for the calm market scenario. Finally, the global AD, which serves as the upper bound welfare, outperforms every other allocation. However, there is the caveat that it allows for unbounded leverage to achieve the "loser-loses-all" allocation, making it unrealistic for real-world pension funds. All-in-all, the LEL-CE looks like a promising alternative to randomized lotteries, preserving the "shared fate" principle. In Table \ref{tab:LEL_Results_Pct} we present the results in terms of percentage change relative to the LEL-CE allocation.
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Percentage change of risk-sharing rules relative to the LEL-CE allocation (\%)}
+  \label{tab:LEL_Results_Pct}
+  \vspace{0.5em}
+  % Custom centered column with wrapping:
+  \newcolumntype{Y}{>{\centering\arraybackslash}X}
+  \setlength{\tabcolsep}{3pt} % tighter horizontal padding between columns
+  \begin{tabularx}{\textwidth}{l *{8}{Y}}
+    \toprule
+    \textbf{Market} & 
+    \textbf{Prop} & 
+    \textbf{Prop} \newline \textbf{LLA} & 
+    \textbf{Opt LLA} \newline \textbf{(cap)} & 
+    \textbf{Opt LLA} \newline \textbf{(free)} & 
+    \textbf{LEL-CE} \newline \textbf{($\epsilon \to 0$)} & 
+    \textbf{LEL-CE} \newline \textbf{(base)} & 
+    \textbf{LEL-CE} \newline \textbf{rand} & 
+    \textbf{Global} \newline \textbf{AD} \\
+    \midrule
+    A & $-1.17$ & $-0.95$ & $-0.95$ & $-0.37$ & $-0.14$ & $0.00$ & $0.16$  & $0.40$  \\
+    B & $-0.37$ &  $0.06$ &  $0.06$ &  $0.57$ & $-0.62$ & $0.00$ & $1.25$  & $19.98$ \\
+    C & $-4.02$ & $-3.85$ & $-3.85$ & $-2.57$ & $-0.07$ & $0.00$ & $0.00$  & $0.00$  \\
+    D & $-0.83$ & $-0.66$ & $-0.66$ & $-0.31$ & $-0.33$ & $0.00$ & $0.13$  & $1.28$  \\
+    E & $-0.81$ & $-0.63$ & $-0.63$ & $-0.25$ & $-0.24$ & $0.00$ & $0.13$  & $1.11$  \\
+    F & $-2.20$ & $-1.94$ & $-1.94$ & $-1.17$ & $-0.04$ & $0.00$ & $0.00$  & $0.00$  \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+Finally, we also have the results in Table \ref{tab:welfare_diff_LEL} relative to the LEL-CE allocation as a percentage of the initial wealth.
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Welfare difference relative to the LEL-CE allocation (\% of initial wealth $W_{i,t}$)}
+  \label{tab:welfare_diff_LEL}
+  \vspace{0.5em}
+  % Custom centered column with wrapping:
+  \newcolumntype{Y}{>{\centering\arraybackslash}X}
+  \setlength{\tabcolsep}{3pt} % tighter horizontal padding between columns
+  \begin{tabularx}{\textwidth}{l *{8}{Y}}
+    \toprule
+    \textbf{Market} & 
+    \textbf{Prop} & 
+    \textbf{Prop} \newline \textbf{LLA} & 
+    \textbf{Opt LLA} \newline \textbf{(cap)} & 
+    \textbf{Opt LLA} \newline \textbf{(free)} & 
+    \textbf{LEL-CE} \newline \textbf{($\epsilon \to 0$)} & 
+    \textbf{LEL-CE} \newline \textbf{(base)} & 
+    \textbf{LEL-CE} \newline \textbf{rand} & 
+    \textbf{Global} \newline \textbf{AD} \\
+    \midrule
+    A & $-1.21$ & $-0.98$ & $-0.98$ & $-0.38$ & $-0.14$ & $0.00$ & $0.17$  & $0.41$  \\
+    B & $-0.38$ &  $0.06$ &  $0.06$ &  $0.60$ & $-0.65$ & $0.00$ & $1.30$  & $20.76$ \\
+    C & $-4.14$ & $-3.97$ & $-3.97$ & $-2.65$ & $-0.07$ & $0.00$ & $0.00$  & $0.00$  \\
+    D & $-0.86$ & $-0.68$ & $-0.68$ & $-0.32$ & $-0.34$ & $0.00$ & $0.13$  & $1.33$  \\
+    E & $-0.83$ & $-0.65$ & $-0.65$ & $-0.26$ & $-0.25$ & $0.00$ & $0.13$  & $1.15$  \\
+    F & $-2.27$ & $-2.00$ & $-2.00$ & $-1.21$ & $-0.04$ & $0.00$ & $0.00$  & $0.00$  \\
+    \bottomrule
+  \end{tabularx}
+\end{table}

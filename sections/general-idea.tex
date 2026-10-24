@@ -1,0 +1,12 @@
+\section{General Idea}
+\label{Sect:General_Idea}
+To demonstrate how substituting the concave envelope changes (as in \citet{Dong2020}) the total fund welfare, the approximation error will be computed via the certainty equivalent (CE) loss. The goal is to measure the (percentage) difference between the CE coming from a Pareto-optimal allocation of risk under the true behavioral utility and the CE of the LEL-PEMC risk-sharing rule under the concave envelope to see whether the relaxation leads to economically significant reduction of welfare.
+
+Because the KT utility function given in Section 4 of the thesis and defined on $[0, \infty)$ is strictly increasing, its inverse is well-defined and continuous:
+\begin{equation*}
+    u_{i,t}^{-1}(y) = \begin{cases} \text{ref}_{i,t} + y^{1/a} & \text{if } y \geq 0 \\ \text{ref}_{i,t} - \left( -\frac{y}{\eta} \right)^{1/b} & \text{if } -\eta (\text{ref}_{i,t})^b \leq y < 0 \end{cases}
+\end{equation*}
+For any candidate risk-sharing rule $W_{i,t+1}$, the certainty equivalent is:
+\begin{equation*}
+    \text{CE}_{i,t}(W_{i,t+1}) = u_{i,t}^{-1}(\E_t^{\P}(u_{i,t}(W_{i,t+1})))
+\end{equation*}

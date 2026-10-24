@@ -1,0 +1,64 @@
+\section{Welfare Losses from Parameter Misspecification}
+The main idea of this section is to showcase how parameter misspecification influences welfare and to see whether this misspecification leads to more severe welfare losses than imposing the concave envelope. We will look at the case where the planner misspecifies a baseline agent with $\eta_{\text{true}} = 2.25$ \citep{KahnemanTversky1992} and solves the allocation rule under the assumed parameter and not under the true one. The fund will erroneously calibrate the contract using a misspecified $\eta_{\text{assumed}} \in \{1.50, 1.75, 2.00, 2.75, 3.00, 4.00\}$. The exercise is also performed for $a_{\text{true}} = 0.88$ and $a_{\text{assumed}} \in \{0.50, 0.70, 0.80, 0.92, 0.95\}$ and for $b$ with the same values. We do this for all market scenarios and compute the welfare loss in the following manner (for $\theta \in \{\eta, a, b\})$:
+\begin{enumerate}
+    \item The correctly calibrated benchmark solves the LEL-CE rule using $\theta_{\text{true}}$, yielding terminal wealth $W^*(\theta_{\text{true}})$ with certainty equivalent:
+    \begin{equation*}
+        \text{CE}^* = u_{\theta_{\text{true}}}^{-1}\left( \E^\P\big( u_{\theta_{\text{true}}}(W^*(\theta_{\text{true}})) \big) \right)
+    \end{equation*}
+    \item The rule is evaluated under the true parameter $\theta_{\text{true}}$:
+    \begin{equation*}
+        \text{CE}_{\text{realized}} = u_{\theta_{\text{true}}}^{-1}\left( \E^\P\big( u_{\theta_{\text{true}}}(W^*(\theta_{\text{assumed}})) \big)\right)
+    \end{equation*}
+    \item The welfare loss in percentage of initial wealth $W_{i,t}$ is:
+    \begin{equation*}
+        \text{Loss}(\%W_{i,t}) = 100 \times \frac{\text{CE}^* - \text{CE}_{\text{realized}}}{W_{i,t}} \geq 0
+    \end{equation*}
+\end{enumerate}
+The results for this are shown in Table \ref{tab:parameter_misspecification}.
+\begin{table}[H]
+  \centering
+  \small
+  \caption{Parameter Misspecification: Certainty Equivalent Loss (\% of $W_i$)}
+  \label{tab:parameter_misspecification}
+  \vspace{0.4em}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l rrrrrr @{}}
+    \toprule
+    Market Regime & \multicolumn{6}{c}{Assumed Parameter Value} \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textbf{Panel A: Loss Aversion ($\eta = 2.25$)}} \\
+    \addlinespace[0.2em]
+    \textit{Assumed $\eta$:} & $1.50$ & $1.75$ & $2.00$ & $2.75$ & $3.00$ & $4.00$ \\
+    \addlinespace[0.2em]
+    A       & $0.5724$ & $0.2685$ & $0.1164$ & $0.0000$ & $0.0000$ & $0.0121$ \\
+    B       & $0.8474$ & $0.5531$ & $0.2497$ & $0.0000$ & $0.0000$ & $0.0000$ \\
+    C  & $0.4570$ & $0.1458$ & $0.0458$ & $0.0217$ & $0.0311$ & $0.0492$ \\
+    D      & $0.6871$ & $0.3735$ & $0.1351$ & $0.0000$ & $0.0000$ & $0.0000$ \\
+    E     & $0.5987$ & $0.3061$ & $0.1268$ & $0.0000$ & $0.0000$ & $0.0000$ \\
+    F    & $0.3813$ & $0.0838$ & $0.0139$ & $0.0110$ & $0.0147$ & $0.0220$ \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textbf{Panel B: Gain Curvature ($a = 0.88$)}} \\
+    \addlinespace[0.2em]
+    \textit{Assumed $a$:} & $0.50$ & $0.70$ & $0.80$ & $0.92$ & $0.95$ & --- \\
+    \addlinespace[0.2em]
+    A       & $0.6052$ & $0.3865$ & $0.1749$ & $0.0000$ & $0.0949$ & --- \\
+    B       & $0.9100$ & $0.6263$ & $0.2163$ & $0.8012$ & $1.3516$ & --- \\
+    C  & $0.7620$ & $0.4448$ & $0.1446$ & $0.0230$ & $0.0455$ & --- \\
+    D      & $0.7821$ & $0.5284$ & $0.2978$ & $0.1525$ & $0.6261$ & --- \\
+    E     & $0.7098$ & $0.4666$ & $0.2524$ & $0.0000$ & $0.0784$ & --- \\
+    F    & $0.7952$ & $0.4389$ & $0.1073$ & $0.0142$ & $0.0225$ & --- \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textbf{Panel C: Loss Curvature ($b = 0.88$)}} \\
+    \addlinespace[0.2em]
+    \textit{Assumed $b$:} & $0.50$ & $0.70$ & $0.80$ & $0.92$ & $0.95$ & --- \\
+    \addlinespace[0.2em]
+    A       & $0.0121$ & $0.0056$ & $0.0019$ & $0.0000$ & $0.0000$ & --- \\
+    B       & $0.0198$ & $0.0079$ & $0.0020$ & $0.0000$ & $0.0000$ & --- \\
+    C  & $0.0005$ & $0.0000$ & $0.0004$ & $0.0002$ & $0.0004$ & --- \\
+    D      & $0.0093$ & $0.0051$ & $0.0016$ & $0.0007$ & $0.0001$ & --- \\
+    E     & $0.0068$ & $0.0026$ & $0.0015$ & $0.0000$ & $0.0000$ & --- \\
+    F    & $0.0011$ & $0.0006$ & $0.0003$ & $0.0006$ & $0.0009$ & --- \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+
+% --- Bibliography ---

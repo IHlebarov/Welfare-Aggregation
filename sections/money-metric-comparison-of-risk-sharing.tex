@@ -1,0 +1,119 @@
+\section{Money-Metric Comparison of Risk-Sharing Rules}
+\label{Sect:Money_Metric_Comparison}
+The example of Section \ref{Sect:Example} showcased the problems with comparison welfare effects in utility units for heterogeneous agents. The SCE measure relies on normalization, includes the welfare loss from introducing the concave envelope, and it collapses when the CEs lie below the reference points. Money-metric comparison, by contrast, depends only on a member's ranking of lotteries in the KT case. It is unchanged by rescaling of the utility, needs no endogenous Pareto weights, and is continuous in the preference parameters. In the terminology of \citet{Fleurbaey2009} it is an equivalent income. We therefore propose to compare risk-sharing rules in money-metric terms, and to retain the analysis of Sections \ref{Sect:Het_Participants_Unique_Weights} and \ref{Sect:Non-Unique_Weights} as a robustness check.
+
+\citet{FleurbaeyManiquet2011} argue that interpersonal comparisons should not compensate individuals for their preferences, where raw CEs fail in this requirement. Looking at the example in Section \ref{Sect:Example}, under the complete-market rule M, each member receives her own optimum. The more risk-averse member nonetheless has the lower CE return: in the example with $\gamma=(2,16)$, a maxmin criterion on CE returns would move 0.40\% of $W_{1,t}$ from member 1 to member 2, purely because member 2 is more risk-averse. We therefore measure each member by his equivalent contribution at market prices, the money-metric utility of \citet{McKenzie1957} and \citet{Samuelson1974} with state prices as reference prices:
+\begin{equation}
+    m_i^k = \min\left\{ \pi_t(X): \E_t^\P(u_{i,t}(X)) \geq \E_t^{\P}(u_{i,t}(W_{i,t+1}^k)) \right\}
+\end{equation}
+It is the contribution that, invested optimally by the member herself, leaves her as well off as rule $k$ does. Its properties are:
+\begin{itemize}
+    \item It represents the agent's preferences, as it depends only on her ranking of lotteries. Hence, Pareto comparisons in $m$ coincide with Pareto comparisons in expected utility;
+    \item It does not compensate for specific preferences as we have that $m_i^k \leq \pi_t(W_{i,t+1}^k)$, with equality if and only if the member receives her own optimum. Participants with different risk attitudes who each receive their optimum all score $m_i/W_{i,t} = 1$ due to market consistency;
+    \item It clearly separates redistribution from inefficiency without relying on endogenous Pareto weights. With value transfers $T_i^k = \pi_t(W_{i,t+1}^k) - W_{i,t}$ and deadweight loss $D_i^k = \pi_t(W_{i,t+1}^k) - m_i^k \geq 0$, i.e.,
+    \begin{equation*}
+        m^k_i-W_{i,t}=T^k_i-D^k_i,\qquad \sum_i\big(m^k_i-W_{i,t}\big)=-\sum_i D^k_i
+    \end{equation*}
+    The transfers cancel due to the feasibility constraint and market consistency, i.e., the fund's payoff being worth $W_t$. A rule that relaxes market consistency therefore show up through visible transfers, and not through unknown set of weights.
+\end{itemize}
+Going back to our CRRA example, we showcase equivalent contribution in the P and B rules for moderate and limit risk aversion in Table \ref{tab:equivalent_contribution_crra}.
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Equivalent contribution $m_i / W_{i,t}$ in the CRRA example (rule M scores 1 for both members)}
+  \label{tab:equivalent_contribution_crra}
+  \vspace{0.5em}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l cccc @{}}
+    \toprule
+    & \textbf{P, $\gamma_2 = 16$} & \textbf{B, $\gamma_2 = 16$} & \textbf{P, $\gamma_2 = \infty$} & \textbf{B, $\gamma_2 = \infty$} \\
+    \midrule
+    Member 1 & 0.9996 & 0.9986 & 0.9996 & 0.9971 \\
+    Member 2 & 0.9711 & 0.9998 & 0.5000 & 1.0000 \\
+    \midrule
+    $\Delta \Xi_0(k)$ (\% of $W_t$)      & $-1.4651$ & $-0.0800$ & $-25.0221$ & $-0.1472$ \\
+    $\Delta \Xi_{0.5}(k)$ (\% of $W_t$)  & $-1.4703$ & $-0.0800$ & $-27.1558$ & $-0.1473$ \\
+    $\Delta \Xi_1(k)$ (\% of $W_t$)      & $-1.4755$ & $-0.0800$ & $-29.3050$ & $-0.1473$ \\
+    $\Delta \Xi_\infty(k)$ (\% of $W_t$) & $-2.8860$ & $-0.1424$ & $-50.0000$ & $-0.2944$ \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+Clearly, Pareto-efficient rule B does not diverge in this equivalent contribution even for extremely high risk aversion. For deterministic rules the efficiency gain of Table \ref{tab:welfare_relative_lel} remain the relevant numbers. The choice of individual measure matters once preferences differ. In this case distributional judgements enter through an explicit inequality-aversion parameter rather than through Pareto weights. The contribution-weighted \citet{Atkinson_1970} index of equivalent-contribution returns is
+\begin{equation}
+    \Xi_\rho(k)=\Big(\sum_i\frac{W_{i,t}}{W_t}\,\big(m^k_i/W_{i,t}\big)^{1-\rho}\Big)^{1/(1-\rho)},\qquad \rho \geq 0,
+\end{equation}
+where when $\rho = 0$ we have the efficiency measure from before in Section \ref{Sect:Het_Participants_Unique_Weights}, while $\rho \to \infty$ gives the maximin criterion favored by \citet{FleurbaeyManiquet2011}. In Table \ref{tab:equivalent_contribution_crra} the results for different values of the inequality aversion parameter $\rho$ relative to rule $M$ ($\Xi_\rho(M)=1$). We say that rule $k$ is preferred to $k'$ for every $\rho$ if it dominates in the generalized Lorenz sense of \citet{Shorrocks1983}. Hence, robustness over inequality aversion replaces the weights set of Section \ref{Sect:Non-Unique_Weights}. In the CRRA example, B dominates P in this sense both at $\gamma_2 = 16$ and $\gamma_2 \to \infty$, making it robust for every degree of inequality aversion, without any robustness radius and without any collapse in the limit.
+
+Any criterion built on individual CE is ex ante as each member's lottery is evaluated from her own point of view, i.e., her own utility, before the outcome is known. Under loss aversion we have shown that by the Counter-monotonic Improvement Theorem \citep{Lauzier2024} this conflicts "shared fate". As each member in the loss aversion case will prefer a randomized loser-loses-all strategy of a rule over the rule itself, we should rank LEL-CE rand over LEL-CE and the optimal LLA rule above the proportional one as per Section \ref{Sect:Risk-Sharing_Rules}. This is the ex ante vs. ex post debate initially discussed by \citet{Diamond1967}'s critique of \citet{Harsanyi1955}. \citet{Fleurbaey2010} proposes to evaluate each realized state by the equally distributed equivalent (EDE) of the ex post distribution and take expectations. He shows that this is essentially the only approach compatible with statewise dominance, while full ex ante Pareto has to be given up. This idea essentially connects to the "shared fate" in that participants are not allowed to buy individual risk-seeking at the cost of ex post inequality among equals, i.e., among the other participants.
+
+Hence, we will now look not at the overall distribution, but at the comparison between the ex ante and ex post analysis. Hence, we will look at the ex post SCE, which is the certain return received by every member in proportion to the individual contribution which is regarded as equally good as the rule. The idea is the unequal outcomes among identical members will be penalized with inequality aversion $\rho$, where the aggregate risk across states is valued with the preferences of each participant. Firstly, we fix the state $\omega$, which means that the market outcome and the outcome of the randomization device $U$ (uniform random variable for the lottery of loser-loses-all) are fixed. The equally distributed equivalent (EDE) of \citet{Atkinson_1970} is the common return that the fund regards as equivalent across the cross-section:
+\begin{equation}
+    e_\rho(\omega)=\Big(\sum_i \tfrac{W_{i,t}}{W_t} \left( \frac{W_{i,t+1}(\omega)}{W_{i,t}}\right)^{1-\rho}\Big)^{1/(1-\rho)}.
+\end{equation}
+For $\rho=0$ this is the contribution-weighted mean return, which is simply the aggregate return $W_{t+1}/W_t$. For $\rho>0$, $e_\rho(\omega)$ falls below the mean whenever returns differ, i.e., inequalities are punished, while for $\rho \to \infty$, it becomes the return of the worst-off member. Therefore, the rule now pays a risky return $e_\rho(\omega)$ to everyone, which is evaluated by the common loss aversion utility function per unit $v$ of contribution and reference point $(1+r)$, i.e.,
+\begin{equation}
+    SCE^{\text{ep}}_\rho=W_t\;v^{-1}\Big(\E^{\P}\big(v\big(e_\rho(\omega)\big)\big)\Big)
+\end{equation}
+with $v$ as in \eqref{eq:Loss_Averion_Per_Unit_Contribution}. The main idea is that the ex post SCE is in money and needs no Pareto weights, it does not depend on how $v$ is normalized and that lotteries are never rewarded. For $\rho=0$ it is worth exactly the underlying rule without randomization, while for $\rho>0$ it is strictly less, meaning that lotteries are punished. Again in our six market scenarios and six allocation rules that have been the focus from Section \ref{Sect:Het_Participants_Unique_Weights} onwards we construct Table \ref{tab:ex_post_vs_ex_ante} with three panels. In Panel A, we have the ex ante rule values, which are the same as the efficiency gains from Panel A of Table \ref{tab:welfare_relative_lel}. In Panel B, we look at the situation with $\rho=0$, while in Panel C, we consider $\rho=0.5$.
+\begin{table}[!htbp]
+  \centering
+  \small
+  \caption{Ex post vs ex ante comparison relative to LEL-CE, \% of $W_t$}
+  \label{tab:ex_post_vs_ex_ante}
+  \vspace{0.5em}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l rrrrrr @{}}
+    \toprule
+    \textbf{Market} & \textbf{Prop} & \textbf{Prop LLA} & \textbf{LEL-CE ($\epsilon \to 0$)} & \textbf{LEL-CE} & \textbf{LEL-CE rand} & \textbf{Global AD} \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textit{\textbf{Panel A: Ex ante}}} \\
+    \addlinespace[0.2em]
+    A & $-1.2077$ & $-0.9837$ & $-0.1408$ & $0$ & $0.1682$ &  $0.4077$ \\
+    B & $-0.3810$ &  $0.0636$ & $-0.6458$ & $0$ & $1.2956$ & $20.7640$ \\
+    C & $-4.1417$ & $-3.9708$ & $-0.0714$ & $0$ & $0.0000$ &  $0.0009$ \\
+    D & $-0.8558$ & $-0.6776$ & $-0.3429$ & $0$ & $0.1306$ &  $1.3287$ \\
+    E & $-0.8343$ & $-0.6493$ & $-0.2541$ & $0$ & $0.1295$ &  $1.1450$ \\
+    F & $-2.2688$ & $-2.0040$ & $-0.0357$ & $0$ & $0.0000$ &  $0.0008$ \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textit{\textbf{Panel B: Ex post, $\rho = 0$}}} \\
+    \addlinespace[0.2em]
+    A & $-1.2077$ & $-1.2077$ & $-0.1408$ & $0$ & $0.0000$ &  $0.4077$ \\
+    B & $-0.3810$ & $-0.3810$ & $-0.6458$ & $0$ & $0.0000$ & $20.7640$ \\
+    C & $-4.1417$ & $-4.1417$ & $-0.0714$ & $0$ & $0.0000$ &  $0.0009$ \\
+    D & $-0.8558$ & $-0.8558$ & $-0.3429$ & $0$ & $0.0000$ &  $1.3287$ \\
+    E & $-0.8343$ & $-0.8343$ & $-0.2541$ & $0$ & $0.0000$ &  $1.1450$ \\
+    F & $-2.2688$ & $-2.2688$ & $-0.0357$ & $0$ & $0.0000$ &  $0.0008$ \\
+    \midrule
+    \multicolumn{7}{@{}l}{\textit{\textbf{Panel C: Ex post, $\rho = 0.5$}}} \\
+    \addlinespace[0.2em]
+    A & $-1.2077$ & $-1.2696$ & $-0.1408$ & $0$ & $-0.2000$ &  $0.4077$ \\
+    B & $-0.3810$ & $-0.4802$ & $-0.6458$ & $0$ & $-1.6191$ & $20.7640$ \\
+    C & $-4.1417$ & $-4.1904$ & $-0.0714$ & $0$ &  $0.0000$ &  $0.0009$ \\
+    D & $-0.8558$ & $-0.9027$ & $-0.3429$ & $0$ & $-0.2812$ &  $1.3287$ \\
+    E & $-0.8343$ & $-0.8833$ & $-0.2541$ & $0$ & $-0.2473$ &  $1.1450$ \\
+    F & $-2.2688$ & $-2.3421$ & $-0.0357$ & $0$ &  $0.0000$ &  $0.0008$ \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+Clearly, for the deterministic rules, i.e., the ones without randomization the values do not move across the three panels. The two lottery rules are punished in the ex post analysis and are therefore always weakly less preferred to the LEL-CE rule, which serves as the baseline. The ranking of the rules changes only for the lottery rules. Nevertheless, the zero loss LEL-CE rule remains the last in the calm state as strict guarantee is costly in calm markets. To be more specific, the difference between the ex ante values and the ex post one at $\rho=0$ can be considered as the price of "shared fate". It is the welfare that members forgo, by their own ex ante preferences, so that nobody inside the fund is singled out to bear the full loss. It essentially makes the concave-envelope relaxation to have the interpretation as the price of "shared fate". The Global AD rule does not change in the ex post analysis, because it is (optimally) an "all or nothing" rule across state of the world, but not across members. When it wipes out, it wipes out the wealth of all participants in the pension scheme. Hence, there are no inequalities within states of the world. This essentially means that the LEL-CE welfare loss comes from both the LEL constraint, i.e., the downside protection, and the lack of lottery, i.e., the deterministic implementation. The second loss is reconciled in the ex post analysis above. For the first consider the results in Table \ref{tab:LEL-CE_vs_Global_AD}, where the idea is to investigate further the behavior of the LEL-CE rand and the Global AD rule in comparison to the LEL-CE rule.
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Comparison of LEL-CE and LEL-CE rand + Global AD}
+  \label{tab:LEL-CE_vs_Global_AD}
+  \vspace{0.5em}
+  \begin{tabularx}{\textwidth}{@{} X l *{6}{r} @{}}
+    \toprule
+    \textbf{Benchmark} & \textbf{Criterion} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D} & \textbf{E} & \textbf{F} \\
+    \midrule
+    (i) Price of "shared fate" (LEL-CE rand) & ex ante     &  0.17 &  1.30 & 0.00 &  0.13 &  0.13 & 0.00 \\
+    & $\rho = 0$   &  0    &  0    & 0    &  0    &  0    & 0    \\
+    & $\rho = 0.5$ & $-0.20$ & $-1.62$ & 0.00 & $-0.28$ & $-0.25$ & 0.00 \\
+    \midrule
+    (ii) Unconstrained investment and risk sharing (Global AD)      & every criterion &  0.41 & 20.76 & 0.00 &  1.33 &  1.15 & 0.00 \\
+    \midrule
+    \multicolumn{2}{@{}l}{Probability of fund wipe out: Global AD} & 1.9\% & 23.6\% & 0.3\% & 2.6\% & 3.1\% & 0.2\% \\
+    \addlinespace[0.3em]
+    \multicolumn{2}{@{}l}{Probability of fund wipe out: LEL-CE}    & 0.3\% &  0.2\% & 0.3\% & 0.2\% & 0.2\% & 0.2\% \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+Essentially, what we see in (i) is the price of "shared fate", which is at most 1.3\% ex ante, 0\% at $\rho$ and negative for $\rho>0$, where LEL-CE is strictly better, where we utilize the pool from Section \ref{Sect:Het_Participants_Unique_Weights}. Looking at (ii), which is computed in symmetric pool setting of Section \ref{Sect:Results}, we see that Global AD wins in every market state. Here, the ex ante vs ex post distinction does not matter, because we are looking at the price of downside protection. In markets C and F the LEL-CE and the Global AD rules are identical. The gains of Global AD in the other markets comes from severe risk-taking as we can see in the last two rows of the table. The 20.8\% welfare gains in the calm market, comes from an extreme leveraged position, which results in a 23.6\% fund wipe out probability, compared to the 0.2\% of the LEL-CE rule. In the base market LEL-CE only loses by 0.4\%, while in the severe downturn markets D and E the loss is 1.2-1.3\%. While the large gambles of the Global AD rule are acceptable for the loss aversion participants, they will not be such for a pension regulator. This goes to show that the LEL-CE creates a balance by paying a small price to restore "shared fate" and provide downside protection.
